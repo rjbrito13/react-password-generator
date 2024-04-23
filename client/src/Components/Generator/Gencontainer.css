@@ -1,0 +1,21 @@
+.gen-container {
+  position: relative;
+  width: 80%;
+  height: 10vh;
+  align-items: center;
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 2% / 50%;
+  border: 2px solid transparent; /* Ensure there's a border set */
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); /* Inner glow effect */
+}
+
+.gen-pass-output {
+  margin-left: 10px;
+  max-width: calc(100% - 20px); /* Adjust based on margin and container width */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflowed text */
+  text-overflow: ellipsis;
+}

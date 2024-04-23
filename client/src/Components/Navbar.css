@@ -1,0 +1,9 @@
+.show-menu {
+  visibility: hidden; /* Initially visible */
+}
+
+@media only screen and (max-width: 1000px) {
+  .show-menu {
+    visibility: visible; /* Initially visible */
+  }
+}

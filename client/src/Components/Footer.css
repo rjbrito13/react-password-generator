@@ -1,0 +1,16 @@
+.attribution {
+  font-size: 14px;
+  color: #555;
+  margin-top: 50px;
+  padding-left: 15px;
+}
+
+.attribution a {
+  color: #007bff; /* Link color */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.attribution a:hover {
+  color: #0056b3; /* Hover color */
+}

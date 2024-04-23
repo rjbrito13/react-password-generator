@@ -1,0 +1,101 @@
+/* General styles */
+.login-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.login-title {
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.username-wrapper {
+  margin-bottom: 10px;
+  margin-right: 25px;
+}
+
+.error-message {
+  color: rgb(223, 57, 57); /* Change color to indicate error */
+}
+
+/* Form container */
+.loginform-container {
+  max-width: 400px;
+  height: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #040a2ee9; /* Adjusted opacity */
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Input fields */
+input {
+  width: calc(100% - 20px); /* Adjust for padding and border */
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.submit-wrapper {
+  bottom: 20px; /* Adjust the vertical position */
+  right: 20px; /* Adjust the horizontal position */
+  justify-content: center;
+
+  flex-direction: row;
+  display: flex;
+}
+
+.btnSubmit {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.btnSubmit:hover {
+  background-color: #45a049; /* Change background color on hover */
+}
+
+.btnSubmit:focus {
+  outline: none; /* Remove focus outline */
+}
+
+/* Password toggle */
+.pass-wrapper {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+i {
+  position: absolute;
+  top: 20%;
+  right: 3%;
+}
+
+i:hover {
+  color: #00fcb6;
+  cursor: pointer;
+}
+
+.signup-wrapper {
+  color: white;
+}
