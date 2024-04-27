@@ -22,11 +22,11 @@
 
 .home-title {
   text-decoration: underline;
-  font-size: 40px;
+ 
   margin-bottom: 1rem;
   color: #333;
 
-  transition: font-size 200ms ease;
+  transition: font-size 0.7s ease;
   transform: scale(1) translateY(0);
   animation: shrink 1s infinite alternate;
 }
@@ -38,6 +38,6 @@
 
 @media only screen and (max-width: 1090px) {
   .home-title {
-    font-size: 28px; /* Initially visible */
+     /* Initially visible */
   }
 }

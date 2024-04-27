@@ -1,6 +1,7 @@
 .modal {
   position: absolute !important;
   width: 100%;
+  max-width: 800px;
   height: 200px;
   z-index: 999;
   display: flex;
@@ -15,6 +16,8 @@
 
 .modal-content {
   display: flex;
+  width: 100%;
+  align-self: centers;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -85,7 +88,8 @@
   }
 
   .modal-content p {
-    font-size: 11px; /* Further decrease font size for very small screens */
+    font-size: 15px; /* Further decrease font size for very small screens */
+    transition: font-size 0.1s ease;
   }
 
   .modal-content .pass-icon {
@@ -93,7 +97,8 @@
     width: 20%;
     max-width: 60px;
     height: auto;
-    margin: 0 30px;
+    margin: 0 20px;
+    visibility: hidden;
   }
 
   .modal-content .checkmark {
@@ -104,6 +109,7 @@
     max-height: 40px;
     margin: 0 40px;
     transition: width 0.3s ease;
+    visibility: hidden;
   }
 
   .close-button {
@@ -112,8 +118,10 @@
 }
 
 /* Media query for 90% zoom level */
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 720px) {
   .modal-content p {
-    font-size: 15px;
+    font-size: 12px;
+    
+    
   }
 }

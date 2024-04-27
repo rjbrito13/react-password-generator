@@ -86,6 +86,7 @@ const PasswordSlideContainer = () => {
         <div className="main-length-slider-container">
           <div className="length-container">
             <PassLengthAdjuster
+             
               value={sliderValue.toString()} // Pass string value to match input type
               onInputChange={handleInputChange} // Pass handler to update slider value
             />

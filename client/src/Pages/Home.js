@@ -26,7 +26,7 @@ const Home = () => {
     <>
       <Fade in={true} timeout={1000}>
         <div className="home-container">
-          <h1 className="home-title">
+          <h1 className="home-title mt-4 text-xl sm:text-3xl underline font-semibold leading-tight">
             Shield Your Identity: Strong Passwords, Stronger Security!
           </h1>
         </div>

@@ -27,19 +27,32 @@ const CustomNumberInput = React.forwardRef(function CustomNumberInput(
   const handleIncrement = () => {
     var newValue = parseFloat(inputProps.value || 0) + 1;
 
-    if (newValue > 100) {
-      newValue = 100;
+    if (newValue > 50) {
+      newValue = 50;
     }
+
+    const newPass = generateRandomPassword(newValue, checkboxState);
+    updateSliderValue(newValue);
+    updateGeneratedPassword(newPass);
 
     props.onInputChange(newValue);
     console.log(newValue);
   };
 
+  
+
   const handleDecrement = () => {
     var newValue = parseFloat(inputProps.value || 0) - 1;
-    if (newValue < -1) {
+    if(newValue > 50) {
+      newValue = 50;
+    }
+    if (newValue < 0) {
       newValue = 0;
     }
+
+    const newPass = generateRandomPassword(newValue, checkboxState);
+    updateSliderValue(newValue);
+    updateGeneratedPassword(newPass);
 
     props.onInputChange(newValue);
     console.log(newValue);
@@ -52,7 +65,11 @@ const CustomNumberInput = React.forwardRef(function CustomNumberInput(
   };
 
   const handleInputChange = (e) => {
-    const newValue = parseFloat(e.target.value);
+    var newValue = parseFloat(e.target.value);
+
+    if(newValue > 50) {
+      newValue = 50;
+    }
 
     const newPass = generateRandomPassword(newValue, checkboxState);
 
@@ -147,7 +164,7 @@ const StyledInputRoot = styled("div")(
   grid-template-columns: 1fr 19px;
   grid-template-rows: 1fr 1fr;
   overflow: hidden;
-  column-gap: 8px;
+  column-gap: 1px;
   padding: 4px;
   
 
@@ -169,10 +186,11 @@ const StyledInputRoot = styled("div")(
 
 const StyledInputElement = styled("input")(
   ({ theme }) => `
-  font-size: 0.875rem;
+  font-size: 1.3rem;
   font-family: inherit;
-  font-weight: 400;
-  width: 23px;
+  font-weight: 600;
+  
+  width: 60px;
   line-height: 1.5;
   grid-column: 1/2;
   grid-row: 1/3;

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Slider.css";
 import { styled, alpha, Box } from "@mui/system";
 import { Slider as BaseSlider, sliderClasses } from "@mui/base/Slider";
 
@@ -10,7 +11,7 @@ export default function UnstyledSliderIntroduction({
   max,
 }) {
   return (
-    <Box sx={{ width: 320 }}>
+     <Box  sx={{ width: ["100%", "100%"] }} className="slider-box">
       <Slider
         value={value}
         defaultValue={defaultValue}

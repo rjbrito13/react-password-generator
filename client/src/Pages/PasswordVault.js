@@ -30,6 +30,7 @@ const PasswordVault = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [backendData, setbackendData] = useState([{}]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -38,14 +39,25 @@ const PasswordVault = () => {
 
       try {
         const response = await fetch("/api");
+
+        if(response.status === 500){
+         throw new Error("500 Internal Server Error");
+        }
+
+
         if (!response.ok) {
+          //throw new Error("Failed to fetch data");
           throw new Error("Failed to fetch data");
         }
         const data = await response.json();
         setbackendData(data.apps);
         setLoading(false);
       } catch (error) {
+        setError(error);
         console.error("Error fetching data:", error);
+        setLoading(false);
+      }
+      finally{
         setLoading(false);
       }
     }
@@ -97,14 +109,24 @@ const PasswordVault = () => {
 
   const handleCopyPassword = (password) => {
     navigator.clipboard.writeText(password);
-    //  setSnackbarMessage("Password copied to clipboard");
-    setSnackbarMessage("I love you Trisha");
+     setSnackbarMessage("Password copied to clipboard");
+    
     setSnackbarOpen(true);
   };
 
   const handleCloseSnackbar = () => {
     setSnackbarOpen(false);
   };
+
+   // Render loading indicator while data is being fetched
+   if (loading) {
+    return <div className="loading-container"><div className="loading">Loading...</div></div>;
+  }
+
+   // Render error message if an error occurred
+  if (error) {
+    return <div className="error-container"><div className="error-message">Error: {error.message}</div></div>;
+  }
 
   return (
     <Fade in={true} timeout={1000}>
