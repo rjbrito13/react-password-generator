@@ -1,14 +1,18 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+require("dotenv").config();
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
+//get connection string;
+const databaseUrl = process.env.DATABASE_URL;
+
 mongoose
-  .connect("mongodb://127.0.0.1:27017/crud")
+  .connect(databaseUrl)
   .then(() => {
     console.log("connect to DB");
   })
