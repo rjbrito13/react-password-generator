@@ -8,7 +8,7 @@ app.get("/api", (req, res) => {
       { number: 2, application: "twitter", password: "gdfgh3234sf" },
       { number: 3, application: "tiktok", password: "dsfkg@#34jk" },
       { number: 4, application: "sample", password: "asdgjsafjksd" },
-      { number: 4, application: "netsuite", password: "samplepass" },
+      { number: 5, application: "netsuite", password: "samplepass" },
     ],
   });
 });
