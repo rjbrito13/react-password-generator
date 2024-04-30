@@ -40,10 +40,9 @@ const PasswordVault = () => {
       try {
         const response = await fetch("/api");
 
-        if(response.status === 500){
-         throw new Error("500 Internal Server Error");
+        if (response.status === 500) {
+          throw new Error("500");
         }
-
 
         if (!response.ok) {
           //throw new Error("Failed to fetch data");
@@ -56,8 +55,7 @@ const PasswordVault = () => {
         setError(error);
         console.error("Error fetching data:", error);
         setLoading(false);
-      }
-      finally{
+      } finally {
         setLoading(false);
       }
     }
@@ -109,8 +107,8 @@ const PasswordVault = () => {
 
   const handleCopyPassword = (password) => {
     navigator.clipboard.writeText(password);
-     setSnackbarMessage("Password copied to clipboard");
-    
+    setSnackbarMessage("Password copied to clipboard");
+
     setSnackbarOpen(true);
   };
 
@@ -118,20 +116,31 @@ const PasswordVault = () => {
     setSnackbarOpen(false);
   };
 
-   // Render loading indicator while data is being fetched
-   if (loading) {
-    return <div className="loading-container"><div className="loading">Loading...</div></div>;
-  }
+  // // Render loading indicator while data is being fetched
+  // if (loading) {
+  //   return (
+  //     <div className="loading-container">
+  //       <div className="loading">Loading.....</div>
+  //     </div>
+  //   );
+  // }
 
-   // Render error message if an error occurred
-  if (error) {
-    return <div className="error-container"><div className="error-message">Error: {error.message}</div></div>;
-  }
+  // if (error) {
+  //   return (
+  //     <Fade in={true} timeout={1000}>
+  //       <div className="error-container">
+  //         <div className="error-message">Error: {error.message}</div>
+  //       </div>
+  //     </Fade>
+  //   );
+  // }
 
   return (
     <Fade in={true} timeout={1000}>
       <div>
-        <h1 className="vault-title">Password Vault</h1>
+        <h1 className="vault-title text-2xl sm:text-5xl font-semibold leading-none transition-all duration-500 text-blue-600">
+          Password Vault
+        </h1>
         <Box display="flex">
           <TextField
             label="Search Application"
@@ -140,7 +149,6 @@ const PasswordVault = () => {
             onChange={handleSearchTermChange}
             style={{
               display: isModalOpen ? "none" : "flex",
-              marginTop: "20px",
               marginBottom: "20px",
               marginLeft: "70px",
               width: "20%",
@@ -159,7 +167,7 @@ const PasswordVault = () => {
             style={{
               display: isModalOpen ? "none" : "block",
               marginLeft: "15px",
-              marginTop: "25px",
+              marginTop: "5px",
               width: "200px",
               height: "45px",
             }}
@@ -176,10 +184,27 @@ const PasswordVault = () => {
         />
 
         <div>
-          {loading ? (
+          {loading && !error ? (
             <div className="loading-container">
               <div className="loading">Loading...</div>
             </div>
+          ) : error && error.message.includes("500") ? (
+            <Fade in={true} timeout={1000}>
+              <div className="error-container">
+                <div className="error-code">{error.message}</div>
+                <div className="error-table-message text-xl sm:text-5xl font-semibold leading-none transition-all duration-500 text-red-600">
+                  Internal Server Error
+                </div>
+              </div>
+            </Fade>
+          ) : error ? (
+            <Fade in={true} timeout={1000}>
+              <div className="error-container">
+                <div className="error-table-messagee">
+                  Error Loading Table: {error.message}
+                </div>
+              </div>
+            </Fade>
           ) : (
             <TableContainer
               component={Paper}

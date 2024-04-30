@@ -7,9 +7,9 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-radius: 2% / 50%;
+  border-radius: 5% / 40%;
   border: 2px solid transparent; /* Ensure there's a border set */
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); /* Inner glow effect */
+  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.8); /* Inner glow effect */
 }
 
 .gen-pass-output {

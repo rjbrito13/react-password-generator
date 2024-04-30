@@ -39,11 +39,9 @@ const CustomNumberInput = React.forwardRef(function CustomNumberInput(
     console.log(newValue);
   };
 
-  
-
   const handleDecrement = () => {
     var newValue = parseFloat(inputProps.value || 0) - 1;
-    if(newValue > 50) {
+    if (newValue > 50) {
       newValue = 50;
     }
     if (newValue < 0) {
@@ -67,7 +65,7 @@ const CustomNumberInput = React.forwardRef(function CustomNumberInput(
   const handleInputChange = (e) => {
     var newValue = parseFloat(e.target.value);
 
-    if(newValue > 50) {
+    if (newValue > 50) {
       newValue = 50;
     }
 
@@ -154,6 +152,7 @@ const StyledInputRoot = styled("div")(
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 400;
   border-radius: 8px;
+  
   color: ${theme.palette.mode === "dark" ? grey[300] : grey[900]};
   background: ${theme.palette.mode === "dark" ? grey[900] : "#fff"};
   border: 1px solid ${theme.palette.mode === "dark" ? grey[700] : grey[200]};
@@ -190,7 +189,7 @@ const StyledInputElement = styled("input")(
   font-family: inherit;
   font-weight: 600;
   
-  width: 60px;
+  width: 50px;
   line-height: 1.5;
   grid-column: 1/2;
   grid-row: 1/3;
@@ -200,6 +199,18 @@ const StyledInputElement = styled("input")(
   border-radius: inherit;
   padding: 8px 12px;
   outline: 0;
+`,
+
+  `
+@media (max-width: 768px) {
+  //style for smaller screen
+
+  font-size: 1rem;
+  width: 42px;
+  line-height: 1.2;
+  grid-column: 1/2;
+  grid-row: 1/4;
+}
 `
 );
 
@@ -227,6 +238,7 @@ const StyledStepperButton = styled("button")(
   
 
     &.increment {
+      margin-top:5px;
       grid-column: 2/3;
       grid-row: 1/2;
       border-top-left-radius: 4px;
@@ -247,6 +259,7 @@ const StyledStepperButton = styled("button")(
     }
 
     &.decrement {
+      margin-top:5px;
       grid-column: 2/3;
       grid-row: 2/3;
       border-bottom-left-radius: 4px;
@@ -265,5 +278,21 @@ const StyledStepperButton = styled("button")(
   }
 
 
+  `,
   `
+@media (max-width: 768px) {
+  //style for smaller screen
+
+  width: 15px;
+  height: 19px;
+  align-items: center;
+  margin-left: 1px;
+  margin-top: 20px;
+
+  &.increment {
+      margin-top:5px;
+
+  }
+}
+`
 );

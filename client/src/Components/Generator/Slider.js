@@ -11,7 +11,7 @@ export default function UnstyledSliderIntroduction({
   max,
 }) {
   return (
-     <Box  sx={{ width: ["100%", "100%"] }} className="ml-1">
+    <Box sx={{ width: ["100%", "100%"] }} className="slider-cont">
       <Slider
         value={value}
         defaultValue={defaultValue}

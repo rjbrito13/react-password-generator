@@ -56,7 +56,9 @@ const Gencontainer = () => {
   return (
     <>
       <div className="gen-container mb-2">
-        <h2 className="gen-pass-output text-1xl sm:text-2xl transition-all duration-500">{generatedPassword}</h2>
+        <h2 className="gen-pass-output text-1xl sm:text-xl font-semibold transition-all duration-500">
+          {generatedPassword}
+        </h2>
         <Tooltip title="Copy" onClick={() => copyToClipboard()}>
           <ContentCopyOutlinedIcon
             sx={{
