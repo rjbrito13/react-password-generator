@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const User = require("./models/userModel");
 require("dotenv").config();
 
 const app = express();
@@ -18,33 +19,64 @@ mongoose
   })
   .catch((err) => console.error(err));
 
-const schemaData = mongoose.Schema(
-  {
-    name: String,
-    email: String,
-    age: Number,
-  },
-  {
-    timestamps: true,
-  }
-);
 
-const UserModel = mongoose.model("user", schemaData);
+//root route for backend
+app.get("/", (req, res) => {
+  res.send({ apps: "Hello from backend" });
+  
+});
+
 
 app.get("/getUsers", async (req, res) => {
-  const data = await UserModel.find({});
+  const data = await User.find({});
+
+  console.log(data);
 
   res.send({ success: true, message: data });
 });
 
 app.post("/create", async (req, res) => {
-  console.log(req.body);
-
-  const data = await UserModel(req.body);
-  await data.save();
-
-  res.send({ success: true, message: "Data Save Successfully" });
+  try {
+    const user = await User.create(req.body);
+    res.status(201).json({ success: true, message: "User created successfully", user });
+  } catch (error) {
+    console.error("User creation error:", error);
+    res.status(500).json({ success: false, message: "User creation failed", error: error.message});
+  }
 });
+
+app.post("/bulkcreate", async(req, res) =>{
+  try{
+    const users = await User.insertMany(req.body);
+
+    res.status(201).json({ success: true, message: "Users created successfully", users });
+
+  } catch(error){
+    console.error("User creation error:", error);
+    res.status(500).json({ success: false, message: "User creation failed", error: error.message});
+
+  }
+
+});
+
+app.post("/deleteAll", async (req, res) => {
+
+  try{
+    const user = await User.deleteMany({});
+
+    res.status(201).json({ success: true, message: "All users deleted successfully", user });
+
+  }catch(error){
+    console.error("User deletion error:", error);
+    res.status(500).json({ success: false, message: "User deletion failed", error: error.message});
+
+  }
+
+})
+
+
+
+
 
 app.put("/update", async (req, res) => {
   console.log(req.body);
